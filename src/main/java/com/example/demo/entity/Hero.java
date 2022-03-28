@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ public class Hero {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<SuperPower> superPowers;
     
     public long getId() {
@@ -41,11 +42,11 @@ public class Hero {
         this.name = name;
     }
 
-    public List<SuperPower> geSuperPower(){
+    public List<SuperPower> getSuperPowers(){
         return superPowers;
     }
 
-    public void setSuperPower(List<SuperPower> superPowers){
+    public void setSuperPowers(List<SuperPower> superPowers){
         this.superPowers = superPowers;
     }
 
